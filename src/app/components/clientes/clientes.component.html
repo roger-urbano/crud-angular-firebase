@@ -1,0 +1,102 @@
+<section class="container">
+   <div class="row mt-5">
+      <div class="col-md-10">
+         <h2 class="">Listado de Clientes</h2>
+      </div>
+      <div class="col-md-2">
+         <button class="btn btn-success" data-target="#exampleModal" data-toggle="modal" type="button">Agregar cliente
+         </button>
+      </div>
+   </div>
+   <hr class="my-3">
+   <div class="row mt-5">
+      <div class="list-group col-md-6">
+         <div  class="list-group-item list-group-item-action list-group-item-primary d-flex justify-content-between align-items-center"
+             *ngFor="let client of clientes; let i = index"
+               (click)="selectedCliente(i)">{{ client.nombre }}
+            <div class="" >
+               <i class="fas fa-eye mr-3"></i>
+               <span class="box-eliminar" (click)="eliminar(client)"> <i class="far fa-trash-alt icon-eliminar text-danger"></i></span>
+            </div>
+         </div>
+      </div>
+      <div class="col-md-5 offset-md-1">
+         <app-analizar-cliente [cliente]="clienteSelected"></app-analizar-cliente>
+      </div>
+   </div>
+   <div class="row">
+      <div class="col-md-5 offset-md-7">
+         <div class="card mb-3 border-success">
+            <div class="card-body">
+               <h6 class="card-subtitle">Cantidad de Clientes: <strong>{{ clientes?.length }}</strong> </h6>
+               <h6 class="card-title">Promedio de edad: <strong>{{ totalPromedio(clientes) }}</strong> </h6>
+               <h4 class="card-title text-danger">Desviacion Estandar: <strong>{{ desviacionEstandar(clientes) }}</strong> </h4>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+   <div class="modal-dialog" role="document">
+      <div class="modal-content">
+         <div class="modal-header bg-primary">
+            <h5 class="modal-title text-white" id="exampleModalLabel">Agregar cliente</h5>
+            <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body">
+            <form #clienteForm="ngForm" (ngSubmit)="agregarCliente(); resetForm()" autocomplete="off" >
+               <div class="form-group">
+                  <input type="text"
+                         class="form-control"
+                         id="inputName"
+                         placeholder="Nombre"
+                         name="nombre"
+                         [(ngModel)]="cliente.nombre"
+                  >
+               </div>
+               <div class="form-group">
+                  <input type="text"
+                         class="form-control"
+                         id="inputAps"
+                         placeholder="Apellido"
+                         name="apellido"
+                         [(ngModel)]="cliente.apellido"
+                  >
+               </div>
+               <div class="form-group">
+                  <input type="number"
+                         class="form-control"
+                         id="inputEdad"
+                         placeholder="Edad"
+                         name="edad"
+                         [(ngModel)]="cliente.edad"
+                  >
+               </div>
+               <div class="input-group mb-3">
+                  <input type="text"
+                         class="form-control"
+                         aria-label="Amount (to the nearest dollar)"
+                         name="fecha_n"
+                         placeholder="Datepicker"
+                         bsDatepicker
+                         [(ngModel)]="cliente.fecha_n"
+                  >
+                  <div class="input-group-append">
+                     <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                  </div>
+               </div>
+               <button class="btn btn-success">Agregar</button>
+               <button type="button" class="btn btn-secondary ml-4" data-dismiss="modal" (click)="resetForm()">Close</button>
+            </form>
+         </div>
+      </div>
+   </div>
+</div>

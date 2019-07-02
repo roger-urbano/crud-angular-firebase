@@ -1,0 +1,25 @@
+<article class="bg-light p-3">
+   <h5 class="">Datos del Cliente</h5>
+   <hr class="my-2">
+   <div class="row">
+      <ul class="">
+         <li class="mb-3">
+            <strong>Nombre: </strong>
+            <span *ngIf="cliente">{{ cliente.nombre }}</span>
+         </li>
+         <li class="mb-3">
+            <strong>Apellidos: </strong>
+            <span *ngIf="cliente">{{ cliente.apellido }}</span></li>
+         <li class="mb-3">
+            <strong>Edad: </strong>
+            <span *ngIf="cliente">{{ cliente.edad }}</span>
+         </li>
+         <li class="mb-3">
+            <strong>Fecha de Nacimiento: </strong>
+            <!--<span *ngIf="cliente">{{ cliente.fecha_n }}</span>-->
+            <span *ngIf="cliente">{{ cliente.fecha_n.seconds * 1000 | date:'MM-dd-yyyy'}}</span>
+         </li>
+      </ul>
+   </div>
+</article>
+
