@@ -29,14 +29,14 @@ export class ClientesComponent implements OnInit {
 
   constructor(private conexion: ConexionService, private router: Router,) {
      this.clientes = [];
+     this.conexion.getClientes().subscribe((cliente) => {
+        this.clientes = cliente;
+     });
   }
 
   ngOnInit() {
     // Asigna este path cuando componente esta cargado (pagina)
-    //  this.router.navigateByUrl('/clientes');
-     this.conexion.getClientes().subscribe((cliente) => {
-        this.clientes = cliente;
-     });
+     this.router.navigateByUrl('/clientes');
   }
 
   selectedCliente(index) {

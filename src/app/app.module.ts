@@ -8,11 +8,11 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 // Firebase
 import { environment } from '../environments/environment';
-import {AngularFireDatabase, AngularFireDatabaseModule} from '@angular/fire/database';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 
 // Componentes
 import { HeaderComponent } from './components/header/header.component';
@@ -21,13 +21,15 @@ import { AnalizarClienteComponent } from './components/clientes/analizar-cliente
 
 // Services
 import {ConexionService} from './services/conexion.service';
+import { ClienteDetalleComponent } from './components/cliente-detalle/cliente-detalle.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     ClientesComponent,
-    AnalizarClienteComponent
+    AnalizarClienteComponent,
+    ClienteDetalleComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +41,7 @@ import {ConexionService} from './services/conexion.service';
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(),
-
+    AngularFireDatabaseModule
   ],
   providers: [
      ConexionService,

@@ -1,0 +1,26 @@
+<section class="container">
+   <div class="row mt-5">
+      <div class="col-md-10">
+         <h2 class="">Detalle de Cliente</h2>
+      </div>
+   </div>
+  <ul>
+     <li><strong>Nombre:</strong> {{ cliente?.nombre }}</li>
+     <li><strong>Apellido:</strong>{{ cliente?.apellido  }}</li>
+     <li><strong>Edad</strong>{{ cliente?.edad  }}</li>
+     <li>
+        <strong>Fecha de Nacimiento:</strong>
+        {{ cliente?.fecha_n.seconds * 1000 | date:'MM-dd-yyyy'}}
+     </li>
+  </ul>
+
+
+</section>
+
+
+
+
+
+
+
+
